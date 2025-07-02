@@ -3,4 +3,4 @@
 	url = https://github.com/livekit/rust-sdks
 [submodule "livekit-api/protocol"]
 	path = livekit-protocol/protocol
-	url = https://github.com/livekit/protocol
+	url = https://github.com/irontec-comms/livekit-protocol
