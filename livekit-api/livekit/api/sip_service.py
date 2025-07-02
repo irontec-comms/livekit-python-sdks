@@ -29,6 +29,8 @@ from livekit.protocol.sip import (
     DeleteSIPDispatchRuleRequest,
     CreateSIPParticipantRequest,
     TransferSIPParticipantRequest,
+    HoldSIPParticipantRequest,
+    UnholdSIPParticipantRequest,
     SIPParticipantInfo,
     SIPTransport,
 )
@@ -443,6 +445,56 @@ class SipService(Service):
                 sip=SIPGrants(call=True),
             ),
             SIPParticipantInfo,
+        )
+
+    async def hold_sip_participant(
+        self, hold: HoldSIPParticipantRequest
+    ) -> None:
+        """Hold a SIP participant call.
+
+        Args:
+            hold: Request containing hold details
+
+        Returns:
+            None
+        """
+        return await self._client.request(
+            SVC,
+            "HoldSIPParticipant",
+            hold,
+            self._auth_header(
+                VideoGrants(
+                    room_admin=True,
+                    room=hold.room_name,
+                ),
+                sip=SIPGrants(call=True),
+            ),
+            None,
+        )
+
+    async def unhold_sip_participant(
+        self, unhold: UnholdSIPParticipantRequest
+    ) -> None:
+        """Unhold a SIP participant call.
+
+        Args:
+            unhold: Request containing unhold details
+
+        Returns:
+            None
+        """
+        return await self._client.request(
+            SVC,
+            "UnholdSIPParticipant",
+            unhold,
+            self._auth_header(
+                VideoGrants(
+                    room_admin=True,
+                    room=unhold.room_name,
+                ),
+                sip=SIPGrants(call=True),
+            ),
+            None,
         )
 
     def _admin_headers(self) -> dict[str, str]:
