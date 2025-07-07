@@ -34,6 +34,7 @@ from livekit.protocol.sip import (
     SIPParticipantInfo,
     SIPTransport,
 )
+from google.protobuf import empty_pb2
 from ._service import Service
 from .access_token import VideoGrants, SIPGrants
 
@@ -449,7 +450,7 @@ class SipService(Service):
 
     async def hold_sip_participant(
         self, hold: HoldSIPParticipantRequest
-    ) -> None:
+    ) -> empty_pb2.Empty:
         """Hold a SIP participant call.
 
         Args:
@@ -469,12 +470,12 @@ class SipService(Service):
                 ),
                 sip=SIPGrants(call=True),
             ),
-            None,
+            empty_pb2.Empty,
         )
 
     async def unhold_sip_participant(
         self, unhold: UnholdSIPParticipantRequest
-    ) -> None:
+    ) -> empty_pb2.Empty:
         """Unhold a SIP participant call.
 
         Args:
@@ -494,7 +495,7 @@ class SipService(Service):
                 ),
                 sip=SIPGrants(call=True),
             ),
-            None,
+            empty_pb2.Empty,
         )
 
     def _admin_headers(self) -> dict[str, str]:
