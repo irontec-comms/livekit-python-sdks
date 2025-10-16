@@ -34,7 +34,7 @@ class bdist_wheel(_bdist_wheel):
 
 
 setuptools.setup(
-    name="livekit",
+    name="livekit-irontec",
     version=about["__version__"],
     description="Python Real-time SDK for LiveKit",
     long_description=(here / "README.md").read_text(encoding="utf-8"),
@@ -57,6 +57,7 @@ setuptools.setup(
     keywords=["webrtc", "realtime", "audio", "video", "livekit"],
     license="Apache-2.0",
     packages=setuptools.find_namespace_packages(include=["livekit.*"]),
+    package_dir={"livekit_irontec": "livekit"},
     python_requires=">=3.9.0",
     install_requires=["protobuf>=4.25.0", "types-protobuf>=3", "aiofiles>=24", "numpy>=1.26"],
     package_data={

@@ -25,7 +25,7 @@ with open(os.path.join(here, "livekit", "api", "version.py"), "r") as f:
 
 
 setuptools.setup(
-    name="livekit-api",
+    name="livekit-api-irontec",
     version=about["__version__"],
     description="Python Server API for LiveKit",
     long_description=(here / "README.md").read_text(encoding="utf-8"),
@@ -47,13 +47,14 @@ setuptools.setup(
     keywords=["webrtc", "realtime", "audio", "video", "livekit"],
     license="Apache-2.0",
     packages=setuptools.find_namespace_packages(include=["livekit.*"]),
+    package_dir={"livekit_irontec": "livekit"},
     python_requires=">=3.9.0",
     install_requires=[
         "pyjwt>=2.0.0",
         "aiohttp>=3.9.0",
         "protobuf>=4",
         "types-protobuf>=4",
-        "livekit-protocol>=1.0.4,<2.0.0",
+        "livekit-protocol-irontec>=1.0.4,<2.0.0",
     ],
     package_data={
         "livekit.api": ["py.typed", "*.pyi", "**/*.pyi"],

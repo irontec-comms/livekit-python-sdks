@@ -25,7 +25,7 @@ with open(os.path.join(here, "livekit", "protocol", "version.py"), "r") as f:
 
 
 setuptools.setup(
-    name="livekit-protocol",
+    name="livekit-protocol-irontec",
     version=about["__version__"],
     description="Python protocol stubs for LiveKit",
     long_description="Python protocol stubs for LiveKit",
@@ -43,6 +43,7 @@ setuptools.setup(
     keywords=["webrtc", "realtime", "audio", "video", "livekit"],
     license="Apache-2.0",
     packages=setuptools.find_namespace_packages(include=["livekit.*"]),
+    ackage_dir={"livekit_irontec": "livekit"},
     python_requires=">=3.7.0",
     install_requires=[
         "protobuf>=4",
